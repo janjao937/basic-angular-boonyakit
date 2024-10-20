@@ -11,6 +11,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {provideHttpClient,HttpClientModule, withInterceptorsFromDi} from "@angular/common/http";
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import {FormsModule}from"@angular/forms";
+import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+
+//HttpClientModule is deprecate use this provideHttpClient(withInterceptorsFromDi()) instead 
+
+const appRoute:Routes=[
+  {path:"",component:TasksComponent},
+  {path:"about",component:AboutComponent}
+]
 
 @NgModule({
   declarations: [
@@ -19,13 +30,16 @@ import {FormsModule}from"@angular/forms";
     ButtonComponent,
     TasksComponent,
     TaskItemComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoute,{enableTracing:true})
     // ,HttpClientModule    //it's deprecate
   ],
   providers: [
